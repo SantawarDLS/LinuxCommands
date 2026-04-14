@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "command": "nmap -sP",
+    "description": "Ping scan - მხოლოდ იმის გაგება, ჩართულია თუ არა ჰოსტი",
+    "category": "Discovery"
+  },
+  {
+    "id": 2,
+    "command": "nmap -sV",
+    "description": "სერვისების ვერსიების დადგენა",
+    "category": "Enumeration"
+  },
+  {
+    "id": 3,
+    "command": "nmap -O",
+    "description": "ოპერაციული სისტემის დეტექცია",
+    "category": "Fingerprinting"
+  }
+]
