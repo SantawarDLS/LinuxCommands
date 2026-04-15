@@ -262,5 +262,5 @@
     "command": "nmap -sV",
     "description": "სერვისების ვერსიების დადგენა",
     "category": "Enumeration"
-  },
+  }
 ]
