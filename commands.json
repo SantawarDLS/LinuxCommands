@@ -248,7 +248,7 @@
   { "id": 50, 
     "command": "nmap --version", 
     "description": "Nmap-ის ვერსიის შემოწმება.", 
-    "category": "General" }
+    "category": "General" },
 
    {
     "id": 51,
