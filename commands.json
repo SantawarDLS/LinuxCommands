@@ -1,20 +1,266 @@
 [
-  {
-    "id": 1,
+ 
+  { "id": 1, 
+    "command": "nmap -sn", 
+    "description": "Ping Scan - ადგენს რომელი ჰოსტებია ჩართული ქსელში პორტების სკანირების გარეშე.", 
+    "category": "Discovery" },
+  
+  { "id": 2, 
+    "command": "nmap -sS -Pn", 
+    "description": "Stealth Scan - ჩუმი სკანირება, რომელიც არ ასრულებს TCP კავშირს (SYN scan).", 
+    "category": "Stealth" },
+  
+  { "id": 3, 
+    "command": "nmap -sV -sC", 
+    "description": "Service & Scripts - ადგენს სერვისების ვერსიებს და უშვებს სტანდარტულ Nmap სკრიპტებს (NSE).", 
+    "category": "Enumeration" },
+  
+  { "id": 4, 
+    "command": "nmap -A", 
+    "description": "Aggressive Scan - აერთიანებს OS-ის დეტექციას, ვერსიებს, სკრიპტებს და traceroute-ს.", 
+    "category": "Aggressive" },
+  
+  { "id": 5, 
+    "command": "nmap -p-", 
+    "description": "Full Port Scan - ასკანირებს ყველა 65535 პორტს.", 
+    "category": "Complete" },
+  
+  { "id": 6, 
+    "command": "nmap --script vuln", 
+    "description": "Vulnerability Scan - ამოწმებს სამიზნეს ცნობილ უსაფრთხოების ხვრელებზე (CVE).", 
+    "category": "Vulnerability" },
+  
+  { "id": 7, 
+    "command": "nmap -T4 -F", 
+    "description": "Fast Scan - სწრაფი სკანირება, რომელიც მხოლოდ ყველაზე პოპულარულ 100 პორტს ამოწმებს.", 
+    "category": "Speed" },
+  
+  { "id": 8, 
+    "command": "nmap -O", 
+    "description": "OS Detection - ცდილობს დაადგინოს რა ოპერაციული სისტემა უყენია სამიზნეს.", 
+    "category": "Fingerprinting" },
+  
+  { "id": 9, 
+    "command": "nmap -p 80,443", 
+    "description": "მხოლოდ HTTP და HTTPS პორტების შემოწმება.", 
+    "category": "Web" },
+  
+  { "id": 10, 
+    "command": "nmap -sU", 
+    "description": "UDP პორტების სკანირება (უფრო ნელია, ვიდრე TCP).", 
+    "category": "UDP" },
+  
+  { "id": 11, 
+    "command": "nmap -iR 100", 
+    "description": "შემთხვევითი 100 ჰოსტის სკანირება ინტერნეტში.", 
+    "category": "Discovery" },
+  
+  { "id": 12, 
+    "command": "nmap --top-ports 20", 
+    "description": "ყველაზე პოპულარული 20 პორტის სწრაფი შემოწმება.", 
+    "category": "Speed" },
+  
+  { "id": 13, 
+    "command": "nmap -sV --version-intensity 9", 
+    "description": "სერვისების ვერსიების მაქსიმალურად დეტალური კვლევა.", 
+    "category": "Enumeration" },
+  
+  { "id": 14, 
+    "command": "nmap -f", 
+    "description": "პაკეტების ფრაგმენტაცია Firewall-ის მოსატყუებლად.", 
+    "category": "Evasion" },
+  
+  { "id": 15, 
+    "command": "nmap -D RND:10", 
+    "description": "სკანირება 10 ყალბი IP-ის (Decoy) გამოყენებით.", 
+    "category": "Evasion" },
+  
+  { "id": 16, 
+    "command": "nmap -S [Fake_IP] -e eth0", 
+    "description": "IP Spoofing - სკანირება სხვა IP მისამართის სახელით.", 
+    "category": "Evasion" },
+  
+  { "id": 17, 
+    "command": "nmap --source-port 53", 
+    "description": "DNS პორტის (53) გამოყენება Firewall-ის გვერდის ასავლელად.", 
+    "category": "Evasion" },
+  
+  { "id": 18, 
+    "command": "nmap --script http-enum", 
+    "description": "ვებ-სერვერზე არსებული საქაღალდეების და ფაილების ძებნა.", 
+    "category": "Web Scripts" },
+  
+  { "id": 19, 
+    "command": "nmap --script dns-brute", 
+    "description": "ქვედომენების (Subdomains) ავტომატური ძებნა Brute-force-ით.", 
+    "category": "DNS" },
+  
+  { "id": 20, 
+    "command": "nmap -p 445 --script smb-os-discovery", 
+    "description": "OS-ის ზუსტი ვერსიის დადგენა SMB პროტოკოლით.", 
+    "category": "SMB" },
+  
+  { "id": 21, 
+    "command": "nmap -p 445 --script smb-vuln-ms17-010", 
+    "description": "EternalBlue ხვრელის შემოწმება Windows-ზე.", 
+    "category": "Vulnerability" },
+  
+  { "id": 22, 
+    "command": "nmap --script ssl-cert", 
+    "description": "SSL სერტიფიკატის ინფორმაციის ამოღება.", 
+    "category": "Web" },
+  
+  { "id": 23, 
+    "command": "nmap --script brute", 
+    "description": "პოპულარულ სერვისებზე პაროლების ავტომატური გადარჩევა.", 
+    "category": "Brute Force" },
+  
+  { "id": 24, 
+    "command": "nmap -sA", 
+    "description": "ACK სკანირება Firewall-ის წესების დასადგენად.", 
+    "category": "Discovery" },
+  
+  { "id": 25, 
+    "command": "nmap -sM", 
+    "description": "Maimon სკანირება (მუშაობს ძველ BSD სისტემებზე).", 
+    "category": "Discovery" },
+  
+  { "id": 26, 
+    "command": "nmap --reason", 
+    "description": "აჩვენებს კონკრეტულ მიზეზს, თუ რატომ არის პორტი ღია/დაკეტილი.", 
+    "category": "Analysis" },
+  
+  { "id": 27, 
+    "command": "nmap -oN output.txt", 
+    "description": "სკანირების შედეგის შენახვა ჩვეულებრივ ტექსტ ფაილში.", 
+    "category": "Reporting" },
+  
+  { "id": 28, 
+    "command": "nmap -oX output.xml", 
+    "description": "შედეგის შენახვა XML ფორმატში შემდგომი ანალიზისთვის.", 
+    "category": "Reporting" },
+  
+  { "id": 29, 
+    "command": "nmap -oA scan_results", 
+    "description": "შედეგის შენახვა სამივე ფორმატში (Normal, XML, Grepable).", 
+    "category": "Reporting" },
+  
+  { "id": 30, 
+    "command": "nmap -T0", 
+    "description": "Paranoid Scan - ძალიან ნელი სკანირება IDS-ის ასარიდებლად.", 
+    "category": "Stealth" },
+  
+  { "id": 31, 
+    "command": "nmap -T5", 
+    "description": "Insane Scan - ექსტრემალურად სწრაფი და ხმაურიანი სკანირება.", 
+    "category": "Speed" },
+  
+  { "id": 32, 
+    "command": "nmap --packet-trace", 
+    "description": "თითოეული გაგზავნილი და მიღებული პაკეტის ნახვა.", 
+    "category": "Analysis" },
+  
+  { "id": 33, 
+    "command": "nmap --iflist", 
+    "description": "ნეთვორქ ინტერფეისების და როუტების ჩამონათვალი.", 
+    "category": "Discovery" },
+  
+  { "id": 34, 
+    "command": "nmap -sI [zombie]", 
+    "description": "Idle Scan - სკანირება მესამე მხარის (Zombie) გამოყენებით.", 
+    "category": "Stealth" },
+  
+  { "id": 35, 
+    "command": "nmap --traceroute", 
+    "description": "სამიზნემდე მიმავალი გზის და ჰოპების ჩვენება.", 
+    "category": "Discovery" },
+  
+  { "id": 36, 
+    "command": "nmap -6", 
+    "description": "IPv6 მისამართების სკანირება.", 
+    "category": "IPv6" },
+  
+  { "id": 37, 
+    "command": "nmap --script auth", 
+    "description": "ავტორიზაციის სერვისების შემოწმება სკრიპტებით.", 
+    "category": "Enumeration" },
+  
+  { "id": 38, 
+    "command": "nmap --script default,safe", 
+    "description": "მხოლოდ უსაფრთხო და სტანდარტული სკრიპტების გაშვება.", 
+    "category": "Enumeration" },
+  
+  { "id": 39, 
+    "command": "nmap -p 21 --script ftp-anon", 
+    "description": "FTP სერვერზე ანონიმური შესვლის შემოწმება.", 
+    "category": "FTP" },
+  
+  { "id": 40, 
+    "command": "nmap -p 22 --script ssh-auth-methods", 
+    "description": "SSH ავტორიზაციის მეთოდების ნახვა.", 
+    "category": "SSH" },
+  
+  { "id": 41, 
+    "command": "nmap -p 25 --script smtp-commands", 
+    "description": "SMTP სერვერის მხარდაჭერილი ბრძანებების ნახვა.", 
+    "category": "SMTP" },
+  
+  { "id": 42, 
+    "command": "nmap -p 3306 --script mysql-info", 
+    "description": "MySQL მონაცემთა ბაზის ინფორმაციის ამოღება.", 
+    "category": "Databases" },
+  
+  { "id": 43, 
+    "command": "nmap -p 80 --script http-title", 
+    "description": "ვებ-გვერდის Title ტეგის ჩვენება.", 
+    "category": "Web" },
+  
+  { "id": 44, 
+    "command": "nmap --script banner", 
+    "description": "Banner Grabbing - სერვისების მისალმების ტექსტის წაკითხვა.", 
+    "category": "Enumeration" },
+  
+  { "id": 45, 
+    "command": "nmap --mtu 24", 
+    "description": "MTU ზომის შეცვლა Firewall-ის გასავლელად.", 
+    "category": "Evasion" },
+  
+  { "id": 46, 
+    "command": "nmap --data-length 50", 
+    "description": "პაკეტებზე შემთხვევითი მონაცემების მიბმა ზომის გასაზრდელად.", 
+    "category": "Evasion" },
+  
+  { "id": 47, 
+    "command": "nmap --spoof-mac Apple", 
+    "description": "MAC მისამართის შეცვლა (მაგალითად, როგორც Apple-ის მოწყობილობა).", 
+    "category": "Evasion" },
+  
+  { "id": 48, 
+    "command": "nmap -p 161 -sU --script snmp-info", 
+    "description": "SNMP ინფორმაციის ამოღება.", 
+    "category": "Network Services" },
+  
+  { "id": 49, 
+    "command": "nmap --script discovery", 
+    "description": "მაქსიმალური ინფორმაციის მოპოვება სამიზნეზე.", 
+    "category": "Aggressive" },
+  
+  { "id": 50, 
+    "command": "nmap --version", 
+    "description": "Nmap-ის ვერსიის შემოწმება.", 
+    "category": "General" }
+
+   {
+    "id": 51,
     "command": "nmap -sP",
     "description": "Ping scan - მხოლოდ იმის გაგება, ჩართულია თუ არა ჰოსტი",
     "category": "Discovery"
   },
+  
   {
-    "id": 2,
+    "id": 52,
     "command": "nmap -sV",
     "description": "სერვისების ვერსიების დადგენა",
     "category": "Enumeration"
   },
-  {
-    "id": 3,
-    "command": "nmap -O",
-    "description": "ოპერაციული სისტემის დეტექცია",
-    "category": "Fingerprinting"
-  }
 ]
